@@ -1,0 +1,12 @@
+{
+    "name": "baghayi/content_scratcher",
+    "description": "For makeing email, mobile unreadable an incomplete",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hossein Baghayi",
+            "email": "hossein.baghayi@gmail.com"
+        }
+    ],
+    "require": {}
+}
