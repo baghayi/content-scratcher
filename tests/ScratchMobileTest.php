@@ -34,4 +34,13 @@ final class ScratchMobileTest extends TestCase
     {
         $result = $this->scratcher->scratch('7800000');
     }
+
+    /**
+     * @test
+     * @expectedException Baghayi\ContentScratcher\InvalidMobileNumber
+     */
+    public function empty_mobile_should_throw_invalid_mobile_phone()
+    {
+        $result = $this->scratcher->scratch('');
+    }
 }

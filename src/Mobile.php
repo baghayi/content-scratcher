@@ -14,6 +14,10 @@ final class Mobile {
 
     private function validateMobileNumber(string $mobile)
     {
+        if(empty($mobile)) {
+            throw new InvalidMobileNumber;
+        }
+
         $phoneNumberInstance = $this->util->parse($mobile, 'IR', null, true);
         if(!$this->util->isValidNumber($phoneNumberInstance)) {
             throw new InvalidMobileNumber;
