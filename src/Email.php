@@ -3,21 +3,20 @@ namespace Baghayi\ContentScratcher;
 
 class Email
 {
-    private $email;
 
-    function __construct(string $email)
+    private function validateEmail(string $email)
     {
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidEmailAddress;
         }
-
-        $this->email = $email;
     }
 
-    public function scratch(): string
+    public function scratch(string $email): string
     {
-        $this->email;
-        $localPart = strstr($this->email, '@', true);
+        $this->validateEmail($email);
+
+        $email;
+        $localPart = strstr($email, '@', true);
         $reversedArrayLocalPart = array_reverse(str_split($localPart));
 
         $halfChars = (int) ceil(count($reversedArrayLocalPart) / 2);
@@ -33,7 +32,7 @@ class Email
 
         $scratchedLocalPart = implode(array_reverse($reversedArrayLocalPart));
 
-        $atSignDomain = strstr($this->email, '@');
+        $atSignDomain = strstr($email, '@');
         return $scratchedLocalPart . $atSignDomain;
     }
 }

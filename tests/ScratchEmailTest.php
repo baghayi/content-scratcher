@@ -11,9 +11,9 @@ final class ScratchEmailTest extends TestCase
      */
     public function given_an_email_scratched_email_is_returned()
     {
+        $email = new \Baghayi\ContentScratcher\Email();
         $emailStrig = 'hossein@gmail.com';
-        $email = new \Baghayi\ContentScratcher\Email($emailStrig);
-        $scratchedValue = $email->scratch();
+        $scratchedValue = $email->scratch($emailStrig);
 
         $this->assertNotSame($emailStrig, $scratchedValue);
         $this->assertSame(strlen($emailStrig), strlen($scratchedValue));
@@ -25,6 +25,6 @@ final class ScratchEmailTest extends TestCase
      */
     public function invalid_email_is_not_accepted()
     {
-        $email = new \Baghayi\ContentScratcher\Email('@gmail.com');
+        (new \Baghayi\ContentScratcher\Email())->scratch('@gmail.com');
     }
 }
